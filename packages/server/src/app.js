@@ -50,6 +50,7 @@ function createApp(config) {
   app.use(getAuthMiddleware(config))
 
   app.use('/files', express.static(config.storage.dir, {index: false, maxAge: '2d', immutable: true}));
+  app.use('/orgFiles', express.static(config.sources[0].dir, {index: false, maxAge: '2d', immutable: true}));
   app.use(bodyParser.json({limit: '1mb'}))
 
   const { read: readEvents, push: pushEvent, stream, getEvents } = eventsApi(eventbus, config.events.file);

@@ -99,6 +99,11 @@ export const MediaNav = ({current, prev, next, listLocation, showNavigation, dis
             <FontAwesomeIcon icon={icons.faInfo} className={iconClass}/>
           </a>
         }
+        { current &&
+          <a href={dispatch({type: 'original'})} className={classNames(buttonClass, buttonBgClass, itemClass)} title="Show original image (o)">
+            <FontAwesomeIcon icon={icons.faImage} className={iconClass}/>
+          </a>
+        }
       </div>
     </>
   )

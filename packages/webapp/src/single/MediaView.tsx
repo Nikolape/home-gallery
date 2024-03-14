@@ -64,7 +64,8 @@ const hotkeysToAction = {
   's': 'similar',
   'c': 'chronology',
   't': 'toggleNavigation',
-  'm': 'map'
+  'm': 'map',
+  'o': 'original'
 }
 
 export const MediaView = () => {
@@ -142,6 +143,18 @@ export const MediaView = () => {
       navigate(`/search/${encodeUrl(action.query)}`);
     } else if (type == 'map') {
       navigate(`/map?lat=${current.latitude.toFixed(5)}&lng=${current.longitude.toFixed(5)}&zoom=14`, {state: {listLocation}})
+    }else if (type == 'original') {
+      console.log("original");
+      console.log(current.files[0].filename);
+      console.log(location.pathname);
+      console.log(`${window.location.hostname}/orgFiles/${current.files[0].filename}`);
+      return `/orgFiles/${current.files[0].filename}`;
+      //location.pathname = `/search/${current.files[0].filename}`;
+      //navigate(`/orgFiles/${current.files[0].filename}`);
+      //history.pushState({}, '', `/orgFiles/${current.files[0].filename}`);
+      // window.location.hostname
+
+      //window.location.replace(`${window.location.hostname}/orgFiles/${current.files[0].filename}`);
     }
   }
 
